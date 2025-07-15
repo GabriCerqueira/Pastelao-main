@@ -1,42 +1,38 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:ffi';
 import 'dart:io';
+import 'dart:isolate';
 import 'dart:math';
 
 void main() {
-  print("Diga seu nome meu nobre");
+  /* print("Diga seu nome meu nobre");
   String? usuario = stdin.readLineSync()!;
-  print(" o seu nome é : $usuario");
+  print(" o seu nome é : $usuario"); */
+
+  var usuario = receberNome();
   var item1 = "machado";
   var item2 = "faca";
   var item3 = "espada";
   var itens = [item1, item2, item3];
   var vida = 100;
-  var nomeMonstro = "Bisteca Mágica";
+  var monstro1 = "Bisteca Mágica";
+  var monstro2 = "Lobisomem Pidão";
+  var monstro3 = "Rato Ovudo";
   print("selecione seus items, digitando de 1 a 3");
   print("itens disponíveis");
   print(itens);
 
   //  print("Os seus itens são $itens");
-
-  String item = stdin.readLineSync()!;
-  if (item == "1") {
-    formatarTexto(formatacao: "$item1");
-  } else if (item == "2") {
-    formatarTexto(formatacao: "$item2");
-  } else if (item == "3") {
-    formatarTexto(formatacao: "$item3");
-  } else {
-    print("Escolha um número de 1 a 3");
-  }
+  String item = escolherItem();  
 
   //Agora Irá começar a luta contra o Monstro
 
   print(
-      "Agora que você escolheu a sua arma, você irá lutar contra o $nomeMonstro");
-  print("A LUTA SERA : $usuario X $nomeMonstro");
-  print("$nomeMonstro --- Me vê uma pouquinho de cuscuz kkkk");
-  luta(nomeMonstro: "Bisteca Mágica", vidaa: 100);
+      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1");
+  print("A LUTA SERA : $usuario X $monstro1");
+  print("$monstro1 --- Me vê uma pouquinho de Briga kkkk");
+  luta(nomeMonstro: monstro1, vidaa: 100);
 }
 
 void formatarTexto({String? formatacao}) {
@@ -91,3 +87,31 @@ void luta({required nomeMonstro, required int vidaa}) {
     ;
   }
 }
+
+String receberNome() {
+  print("Diga seu nome");
+  var usuario = stdin.readLineSync().toString();
+  if (usuario.isEmpty) {
+    receberNome();
+  }
+  return usuario;
+}
+
+String escolherItem(){
+  String item = stdin.readLineSync()!;
+switch(item){
+  case"1":
+  formatarTexto(formatacao:"machado");
+  return item = "Machado";
+  case "2" :
+  formatarTexto(formatacao:"Faca");
+  return item = "Faca";
+  case "3":
+  formatarTexto(formatacao:"Espada");
+  return item = "Espada";
+  default: 
+  print("Digite o número de 1 a 3 papae");
+  escolherItem();
+  }
+  return item;
+ }
