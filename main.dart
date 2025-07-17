@@ -6,9 +6,7 @@ import 'dart:isolate';
 import 'dart:math';
 
 void main() {
-  /* print("Diga seu nome meu nobre");
-  String? usuario = stdin.readLineSync()!;
-  print(" o seu nome é : $usuario"); */
+  
 
   var usuario = receberNome();
   var item1 = "machado";
@@ -92,7 +90,8 @@ String receberNome() {
   print("Diga seu nome");
   var usuario = stdin.readLineSync().toString();
   if (usuario.isEmpty) {
-    receberNome();
+   
+    return receberNome();
   }
   return usuario;
 }
