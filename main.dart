@@ -5,10 +5,10 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:math';
 
-void main() {
-  
-
-  var usuario = receberNome();
+void main() async {
+    var usuario = receberNome();
+  await escreverDevagar(
+      "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n");
   var item1 = "machado";
   var item2 = "faca";
   var item3 = "espada";
@@ -17,19 +17,19 @@ void main() {
   var monstro1 = "Bisteca Mágica";
   var monstro2 = "Lobisomem Pidão";
   var monstro3 = "Rato Ovudo";
-  print("selecione seus items, digitando de 1 a 3");
-  print("itens disponíveis");
-  print(itens);
+  await escreverDevagar("selecione seus items, digitando de 1 a 3 \n");
+  await escreverDevagar("itens disponíveis \n");
+  await escreverDevagar("Machado, Faca, Espada \n");
 
   //  print("Os seus itens são $itens");
-  String item = escolherItem();  
+  String item = escolherItem();
 
   //Agora Irá começar a luta contra o Monstro
 
-  print(
-      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1");
-  print("A LUTA SERA : $usuario X $monstro1");
-  print("$monstro1 --- Me vê uma pouquinho de Briga kkkk");
+ await escreverDevagar(
+      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1" "\n");
+  await escreverDevagar("A LUTA SERA : $usuario X $monstro1""\n");
+  await escreverDevagar("$monstro1 --- Você será bistecado kkkk ""\n");
   luta(nomeMonstro: monstro1, vidaa: 100);
 }
 
@@ -90,27 +90,33 @@ String receberNome() {
   print("Diga seu nome");
   var usuario = stdin.readLineSync().toString();
   if (usuario.isEmpty) {
-   
     return receberNome();
   }
   return usuario;
 }
 
-String escolherItem(){
+String escolherItem() {
   String item = stdin.readLineSync()!;
-switch(item){
-  case"1":
-  formatarTexto(formatacao:"machado");
-  return item = "Machado";
-  case "2" :
-  formatarTexto(formatacao:"Faca");
-  return item = "Faca";
-  case "3":
-  formatarTexto(formatacao:"Espada");
-  return item = "Espada";
-  default: 
-  print("Digite o número de 1 a 3 papae");
-  escolherItem();
+  switch (item) {
+    case "1":
+      formatarTexto(formatacao: "machado");
+      return item = "Machado";
+    case "2":
+      formatarTexto(formatacao: "Faca");
+      return item = "Faca";
+    case "3":
+      formatarTexto(formatacao: "Espada");
+      return item = "Espada";
+    default:
+      print("Digite o número de 1 a 3 papae");
+      escolherItem();
   }
   return item;
- }
+}
+
+Future<void> escreverDevagar(String texto) async {
+  for (int i = 0; i < texto.length; i++) {
+    stdout.write(texto[i]);
+    await Future.delayed(Duration(milliseconds: 75));
+  }
+}
