@@ -8,7 +8,7 @@ import 'dart:math';
 void main() async {
     var usuario = receberNome();
   await escreverDevagar(
-      "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n");
+      "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n", 35);
   var item1 = "machado";
   var item2 = "faca";
   var item3 = "espada";
@@ -17,9 +17,9 @@ void main() async {
   var monstro1 = "Bisteca Mágica";
   var monstro2 = "Lobisomem Pidão";
   var monstro3 = "Rato Ovudo";
-  await escreverDevagar("selecione seus items, digitando de 1 a 3 \n");
-  await escreverDevagar("itens disponíveis \n");
-  await escreverDevagar("Machado, Faca, Espada \n");
+  await escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
+  await escreverDevagar("itens disponíveis \n",35);
+  await escreverDevagar("Machado, Faca, Espada \n",35 );
 
   //  print("Os seus itens são $itens");
   String item = escolherItem();
@@ -27,9 +27,9 @@ void main() async {
   //Agora Irá começar a luta contra o Monstro
 
  await escreverDevagar(
-      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1" "\n");
-  await escreverDevagar("A LUTA SERA : $usuario X $monstro1""\n");
-  await escreverDevagar("$monstro1 --- Você será bistecado kkkk ""\n");
+      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1" "\n", 35);
+  await escreverDevagar("A LUTA SERA : $usuario X $monstro1""\n", 35);
+  await escreverDevagar("$monstro1 --- Você será bistecado kkkk ""\n", 35);
   luta(nomeMonstro: monstro1, vidaa: 100);
 }
 
@@ -114,9 +114,9 @@ String escolherItem() {
   return item;
 }
 
-Future<void> escreverDevagar(String texto) async {
+Future<void> escreverDevagar(String texto, int tempoDelay) async {
   for (int i = 0; i < texto.length; i++) {
     stdout.write(texto[i]);
-    await Future.delayed(Duration(milliseconds: 75));
+    await Future.delayed(Duration(milliseconds: tempoDelay));
   }
 }
