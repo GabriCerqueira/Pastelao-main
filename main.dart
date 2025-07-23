@@ -6,9 +6,11 @@ import 'dart:isolate';
 import 'dart:math';
 
 void main() async {
-    var usuario = receberNome();
-  await escreverDevagar(
-      "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n", 35);
+  var usuario = receberNome();
+
+  escreverDevagar(
+      "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n",
+      35);
   var item1 = "machado";
   var item2 = "faca";
   var item3 = "espada";
@@ -17,19 +19,21 @@ void main() async {
   var monstro1 = "Bisteca Mágica";
   var monstro2 = "Lobisomem Pidão";
   var monstro3 = "Rato Ovudo";
-  await escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
-  await escreverDevagar("itens disponíveis \n",35);
-  await escreverDevagar("Machado, Faca, Espada \n",35 );
+  escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
+  escreverDevagar("itens disponíveis \n", 35);
+  escreverDevagar("Machado, Faca, Espada \n", 35);
 
   //  print("Os seus itens são $itens");
   String item = escolherItem();
 
   //Agora Irá começar a luta contra o Monstro
 
- await escreverDevagar(
-      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1" "\n", 35);
-  await escreverDevagar("A LUTA SERA : $usuario X $monstro1""\n", 35);
-  await escreverDevagar("$monstro1 --- Você será bistecado kkkk ""\n", 35);
+  escreverDevagar(
+      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1"
+      "\n",
+      35);
+  escreverDevagar("A LUTA SERA : $usuario X $monstro1" "\n", 35);
+  escreverDevagar("$monstro1 --- Você será bistecado kkkk " "\n", 35);
   luta(nomeMonstro: monstro1, vidaa: 100);
 }
 
@@ -92,6 +96,10 @@ String receberNome() {
   if (usuario.isEmpty) {
     return receberNome();
   }
+  var nomezinSimNao = confirmacao(usuario);
+  if (!nomezinSimNao) {
+    return receberNome();
+  }
   return usuario;
 }
 
@@ -114,9 +122,31 @@ String escolherItem() {
   return item;
 }
 
-Future<void> escreverDevagar(String texto, int tempoDelay) async {
+void escreverDevagar(String texto, int tempoDelay) {
   for (int i = 0; i < texto.length; i++) {
     stdout.write(texto[i]);
-    await Future.delayed(Duration(milliseconds: tempoDelay));
+    sleep(Duration(milliseconds: tempoDelay));
   }
+}
+
+bool confirmacao(String usuario) {
+  bool? confirmation;
+
+  while (confirmation == null) {
+    print("Você está de acordo com o nome escolhido (S/N)? $usuario");
+
+    var simNao = stdin.readLineSync()?.toUpperCase();
+
+    switch (simNao) {
+      case "S":
+        confirmation = true;
+        break;
+      case "N":
+        confirmation = false;
+        break;
+      default:
+        print("Escolha alguma das opções abaixo");
+    }
+  }
+  return confirmation;
 }
