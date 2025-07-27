@@ -6,7 +6,7 @@ import 'dart:isolate';
 import 'dart:math';
 
 void main() async {
-  map personagemSimples = {
+  var personagemSimples = {
     "nomeUsuario": receberNome(),
     "vida": 100,
     "itemEscolhido": null,
@@ -19,7 +19,7 @@ void main() async {
 
   var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
   var usuario = personagemSimples["nomeUsuario"];
-  int vida = personagemSimples[1];
+  var vida = personagemSimples["vida"];
   List monstros = ["Bisteca Mágica", "Lobisomem Pidão", "Rato ovudo"];
   var monstro1 = monstros[0];
   var monstro2 = monstros[1];
@@ -49,14 +49,14 @@ void main() async {
     35,
   );
   personagemSimples["vida"] = luta(nomeMonstro: monstro1, vidaa: vida);
-  print("Você terminou a luta com o saldo de $vida");
+  print(personagemSimples["vida"]);
 }
 
 void formatarTexto({String? formatacao}) {
   print("O item escolhido é $formatacao");
 }
 
-int? lutarMonstro({required String nomeMonstro, required int vida}) {
+int? lutarMonstro({required String nomeMonstro, required var vida}) {
   print("VOCÊ IRÁ JOGAR O DADO PARA VER SE IRÁ GANHAR DO $nomeMonstro");
   var d10 = Random().nextInt(10);
   print("O valor do dado de 1 a 10 foi de $d10");
@@ -70,7 +70,7 @@ int? lutarMonstro({required String nomeMonstro, required int vida}) {
   }
 }
 
-int? luta({required nomeMonstro, required int vidaa}) {
+int? luta({required nomeMonstro, required var vidaa}) {
   int? vida = 100;
   while (vida! > 0) {
     print(
