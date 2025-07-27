@@ -6,7 +6,7 @@ import 'dart:isolate';
 import 'dart:math';
 
 void main() async {
-  var personagemSimples = {
+  map personagemSimples = {
     "nomeUsuario": receberNome(),
     "vida": 100,
     "itemEscolhido": null,
@@ -19,7 +19,7 @@ void main() async {
 
   var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
   var usuario = personagemSimples["nomeUsuario"];
-  var vida = personagemSimples[1];
+  int vida = personagemSimples[1];
   List monstros = ["Bisteca Mágica", "Lobisomem Pidão", "Rato ovudo"];
   var monstro1 = monstros[0];
   var monstro2 = monstros[1];
@@ -48,7 +48,7 @@ void main() async {
     "\n",
     35,
   );
-  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vidaa: 100);
+  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vidaa: vida);
   print("Você terminou a luta com o saldo de $vida");
 }
 
