@@ -6,35 +6,50 @@ import 'dart:isolate';
 import 'dart:math';
 
 void main() async {
-  var usuario = receberNome();
+  var personagemSimples = {
+    "nomeUsuario": receberNome(),
+    "vida": 100,
+    "itemEscolhido": null,
+  };
 
   escreverDevagar(
-      "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n",
-      35);
-  var item1 = "machado";
-  var item2 = "faca";
-  var item3 = "espada";
-  var itens = [item1, item2, item3];
-  var vida = 100;
-  var monstro1 = "Bisteca Mágica";
-  var monstro2 = "Lobisomem Pidão";
-  var monstro3 = "Rato Ovudo";
+    "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n",
+    35,
+  );
+
+  var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
+  var usuario = personagemSimples["nomeUsuario"];
+  var vida = personagemSimples[1];
+  List monstros = ["Bisteca Mágica", "Lobisomem Pidão", "Rato ovudo"];
+  var monstro1 = monstros[0];
+  var monstro2 = monstros[1];
+  var monstro3 = monstros[2];
   escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
   escreverDevagar("itens disponíveis \n", 35);
-  escreverDevagar("Machado, Faca, Espada \n", 35);
+  escreverDevagar("$itens \n", 35);
 
   //  print("Os seus itens são $itens");
-  String item = escolherItem();
-
+  personagemSimples["itemEscolhido"] = escolherItem();
+  print(personagemSimples);
   //Agora Irá começar a luta contra o Monstro
 
   escreverDevagar(
-      "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1"
-      "\n",
-      35);
-  escreverDevagar("A LUTA SERA : $usuario X $monstro1" "\n", 35);
-  escreverDevagar("$monstro1 --- Você será bistecado kkkk " "\n", 35);
-  luta(nomeMonstro: monstro1, vidaa: 100);
+    "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1"
+    "\n",
+    35,
+  );
+  escreverDevagar(
+    "A LUTA SERA : $usuario X $monstro1"
+    "\n",
+    35,
+  );
+  escreverDevagar(
+    "$monstro1 --- Você será bistecado kkkk "
+    "\n",
+    35,
+  );
+  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vidaa: 100);
+  print("Você terminou a luta com o saldo de $vida");
 }
 
 void formatarTexto({String? formatacao}) {
@@ -55,16 +70,18 @@ int? lutarMonstro({required String nomeMonstro, required int vida}) {
   }
 }
 
-void luta({required nomeMonstro, required int vidaa}) {
-  int? vida = vidaa;
+int? luta({required nomeMonstro, required int vidaa}) {
+  int? vida = 100;
   while (vida! > 0) {
     print(
-        "Escreva 1 para fugir do $nomeMonstro , ou 2 para lutar com o $nomeMonstro ");
+      "Escreva 1 para fugir do $nomeMonstro , ou 2 para lutar com o $nomeMonstro ",
+    );
     var lutar = stdin.readLineSync();
     if (lutar == "1") {
       var d10Luta = Random().nextInt(10);
       print(
-          "Você irá ser capaz de fugir de acordo com o valor do dado, o valor do dado é $d10Luta");
+        "Você irá ser capaz de fugir de acordo com o valor do dado, o valor do dado é $d10Luta",
+      );
       if (d10Luta > 5) {
         print("Você conseguiu fugir do Monstro");
         break;
@@ -74,6 +91,7 @@ void luta({required nomeMonstro, required int vidaa}) {
           break;
         } else {
           vida = resultado2;
+          return vida;
         }
       }
     } else if (lutar == "2") {
@@ -82,6 +100,7 @@ void luta({required nomeMonstro, required int vidaa}) {
         break;
       } else {
         vida = resultado;
+        return vida;
       }
     } else {
       print("Digite os Números 1 ou 2 ");
@@ -107,14 +126,14 @@ String escolherItem() {
   String item = stdin.readLineSync()!;
   switch (item) {
     case "1":
-      formatarTexto(formatacao: "machado");
-      return item = "Machado";
+      formatarTexto(formatacao: "Arco e flecha");
+      return item = "Arco e Flecha";
     case "2":
-      formatarTexto(formatacao: "Faca");
-      return item = "Faca";
+      formatarTexto(formatacao: "Cajado do Vazio");
+      return item = "Cajado do Vazio";
     case "3":
-      formatarTexto(formatacao: "Espada");
-      return item = "Espada";
+      formatarTexto(formatacao: "Espada Vorpal");
+      return item = "Espada Vorpal";
     default:
       print("Digite o número de 1 a 3 papae");
       escolherItem();
