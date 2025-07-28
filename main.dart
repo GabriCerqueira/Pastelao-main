@@ -48,7 +48,7 @@ void main() async {
     "\n",
     35,
   );
-  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vidaa: vida);
+ personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
   print(personagemSimples["vida"]);
 }
 
@@ -70,7 +70,7 @@ int? lutarMonstro({required String nomeMonstro, required var vida}) {
   }
 }
 
-int? luta({required nomeMonstro, required var vidaa}) {
+int? luta({required nomeMonstro, required var vida}) {
   int? vida = 100;
   while (vida! > 0) {
     print(
