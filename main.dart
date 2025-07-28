@@ -48,7 +48,7 @@ void main() async {
     "\n",
     35,
   );
- personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
+  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
   print(personagemSimples["vida"]);
 }
 
@@ -91,7 +91,6 @@ int? luta({required nomeMonstro, required var vida}) {
           break;
         } else {
           vida = resultado2;
-          return vida;
         }
       }
     } else if (lutar == "2") {
@@ -100,13 +99,13 @@ int? luta({required nomeMonstro, required var vida}) {
         break;
       } else {
         vida = resultado;
-        return vida;
       }
     } else {
       print("Digite os Números 1 ou 2 ");
     }
     ;
   }
+  return vida;
 }
 
 String receberNome() {
