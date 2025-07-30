@@ -2,23 +2,24 @@ import 'dart:math';
 import 'dart:io';
 
 void main() {
-  var chefoes = {
-    "nome": "Caveira de Chamas",
+  var monstros = {
+    "nome": "Dois caras numa moto",
     "vida": 10,
-    "Habilidades": [{
-      "Primaria" : "Bola de Chamas",
-      "Secundária" :"Rajada de Chamas" 
-    }],
-    "nome": "Golem de Ferro",
+    "Habilidades": [
+      {"Primaria": "Três tiros", "Secundária": "Paulada"},
+    ],
+    "nome": "Bêbado do Centro",
     "vida": "20",
-    "Habilidades":[{
-      "Primaria" : "Soco Biônico",
-      "Secundaria" : "Lançamento de oponente"
-    }]
-
-    
+    "Habilidades": [
+      {"Primaria": "Facada", "Secundaria": "Lançamento de cocô"},
+    ],
+    "nome": "CLT de Ressaca",
+    "vida": "5",
+    "Habilidades": [
+      {
+        "Primaria": "Joga a culpa em você",
+        "Secundaria": "Derrama café quente você",
+      },
+    ],
   };
-  
-
-  
 }
