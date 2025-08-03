@@ -20,21 +20,47 @@ void main() async {
   var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
   var usuario = personagemSimples["nomeUsuario"];
   var vida = personagemSimples["vida"];
-  List monstros = ["Bisteca Mágica", "Lobisomem Pidão", "Rato ovudo"];
-  var monstro1 = monstros[0];
-  var monstro2 = monstros[1];
-  var monstro3 = monstros[2];
+  var monstros = [
+    {
+      "nome": "Dois caras numa moto",
+      "vida": 10,
+      "Habilidades": [
+        {"Primaria": "Três tiros", "Secundária": "Paulada"},
+      ],
+    },
+    {
+      "nome": "Bêbado do Centro",
+      "vida": "20",
+      "Habilidades": [
+        {"Primaria": "Facada", "Secundaria": "Lançamento de cocô"},
+      ],
+    },
+    {
+      "nome": "CLT de Ressaca",
+      "vida": "5",
+      "Habilidades": [
+        {
+          "Primaria": "Joga a culpa em você",
+          "Secundaria": "Derrama café quente você",
+        },
+      ],
+    },
+  ];
+
+  var monstro1 = monstros[0]["nome"];
+  var monstro2 = monstros[1]["nome"];
+  var monstro3 = monstros[2]["nome"];
   escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
   escreverDevagar("itens disponíveis \n", 35);
   escreverDevagar("$itens \n", 35);
 
   //  print("Os seus itens são $itens");
   personagemSimples["itemEscolhido"] = escolherItem();
-  print(personagemSimples);
+  var monstroAserEscolhido = escolherItem();
   //Agora Irá começar a luta contra o Monstro
-
+  
   escreverDevagar(
-    "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1"
+    "Agora que você escolheu a sua arma, você irá lutar contra o $monstro2"
     "\n",
     35,
   );
@@ -48,7 +74,7 @@ void main() async {
     "\n",
     35,
   );
- personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
+  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
   print(personagemSimples["vida"]);
 }
 
@@ -91,7 +117,6 @@ int? luta({required nomeMonstro, required var vida}) {
           break;
         } else {
           vida = resultado2;
-          
         }
       }
     } else if (lutar == "2") {
@@ -100,7 +125,6 @@ int? luta({required nomeMonstro, required var vida}) {
         break;
       } else {
         vida = resultado;
-        
       }
     } else {
       print("Digite os Números 1 ou 2 ");
