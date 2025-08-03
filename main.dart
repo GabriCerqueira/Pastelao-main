@@ -58,23 +58,50 @@ void main() async {
   personagemSimples["itemEscolhido"] = escolherItem();
   var monstroAserEscolhido = escolherItem();
   //Agora Irá começar a luta contra o Monstro
-  
+  switch (monstroAserEscolhido) {
+    case "Arco e Flecha":
+      escreverDevagar(
+        "Agora que você escolheu a sua arma, você irá lutar contra o $monstro2"
+        "\n",
+        35,
+      );
+      escreverDevagar(
+        "A LUTA SERA : $usuario X $monstro2"
+        "\n",
+        35,
+      );
+      personagemSimples["vida"] = luta(nomeMonstro: monstro2, vida: vida);
+    case "Cajado do Vazio":
+      escreverDevagar(
+        "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1"
+        "\n",
+        35,
+      );
+      escreverDevagar(
+        "A LUTA SERA : $usuario X $monstro1"
+        "\n",
+        35,
+      );
+      personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
+    case "Espada Vorpal":
+      escreverDevagar(
+        "Agora que você escolheu a sua arma, você irá lutar contra o $monstro3"
+        "\n",
+        35,
+      );
+      escreverDevagar(
+        "A LUTA SERA : $usuario X $monstro3"
+        "\n",
+        35,
+      );
+      personagemSimples["vida"] = luta(nomeMonstro: monstro3, vida: vida);
+  }
+
   escreverDevagar(
-    "Agora que você escolheu a sua arma, você irá lutar contra o $monstro2"
+    "$monstro1 --- Sobrara nada para o betinha da silva"
     "\n",
     35,
   );
-  escreverDevagar(
-    "A LUTA SERA : $usuario X $monstro1"
-    "\n",
-    35,
-  );
-  escreverDevagar(
-    "$monstro1 --- Você será bistecado kkkk "
-    "\n",
-    35,
-  );
-  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
   print(personagemSimples["vida"]);
 }
 
