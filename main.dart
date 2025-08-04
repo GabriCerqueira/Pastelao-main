@@ -12,7 +12,7 @@ void main() async {
     "nomeUsuario": receberNome(),
     "vida": 100,
     "itemEscolhido": null,
-    "zonaescolhida": null,
+    "zonaescolhida": zonaSaoPaulo(),
   };
 
   escreverDevagar(
@@ -23,6 +23,7 @@ void main() async {
   var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
   var usuario = personagemSimples["nomeUsuario"];
   var vida = personagemSimples["vida"];
+  var zonaDaSilva = personagemSimples["zonaescolhida"];
   var monstrosZonaLeste = [
     {
       "nome": "Dois caras numa moto",
@@ -59,7 +60,7 @@ void main() async {
 
   //  print("Os seus itens são $itens");
   personagemSimples["itemEscolhido"] = escolherItem();
-  var monstroAserEscolhido = escolherItem();
+  
   //Agora Irá começar a luta contra o Monstro
   escreverDevagar(
     "A LUTA SERA : $usuario X $monstro2"
@@ -207,7 +208,7 @@ bool confirmacao(String usuario) {
   return confirmation;
 }
 
-String? zonaSaoPaulo({required String escolha}) {
+String? zonaSaoPaulo() {
   escreverDevagar(
     "Esse RPG se passa na cidade de São Paulo, portanto você deve escolher em qual zona da cidade deseja iniciar sua aventura \n ",
     35,
