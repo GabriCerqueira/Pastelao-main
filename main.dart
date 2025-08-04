@@ -20,7 +20,7 @@ void main() async {
     35,
   );
 
-  var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
+  var itens = ["Três oitão", "Canivete de Bolso", "Taser"];
   var usuario = personagemSimples["nomeUsuario"];
   var vida = personagemSimples["vida"];
   var zonaDaSilva = personagemSimples["zonaescolhida"];
@@ -50,7 +50,8 @@ void main() async {
       ],
     },
   ];
-
+ var monstro1Habilidade = monstrosZonaLeste[0]["Habilidades"];
+ print(monstro1Habilidade);
   var monstro1 = monstrosZonaLeste[0]["nome"];
   var monstro2 = monstrosZonaLeste[1]["nome"];
   var monstro3 = monstrosZonaLeste[2]["nome"];
@@ -101,7 +102,7 @@ int? lutarMonstro({required String nomeMonstro, required var vida}) {
   print("O valor do dado de 1 a 10 foi de $d10");
   if (d10 < 5) {
     vida = vida - 10;
-    print("sua vida esta com o saldo de $vida");
+    print("O monstro usou sua habilidade de  sua vida esta com o saldo de $vida");
     return vida;
   } else {
     print("Você ganhou do $nomeMonstro");
@@ -164,14 +165,14 @@ String escolherItem() {
   String item = stdin.readLineSync()!;
   switch (item) {
     case "1":
-      formatarTexto(formatacao: "Arco e flecha");
-      return item = "Arco e Flecha";
+      formatarTexto(formatacao: "Três Oitao");
+      return item = "Três Oitão";
     case "2":
-      formatarTexto(formatacao: "Cajado do Vazio");
-      return item = "Cajado do Vazio";
+      formatarTexto(formatacao: "Canivete de Bolso");
+      return item = "Canivete de Bolso";
     case "3":
-      formatarTexto(formatacao: "Espada Vorpal");
-      return item = "Espada Vorpal";
+      formatarTexto(formatacao: "Taser");
+      return item = "Taser";
     default:
       print("Digite o número de 1 a 3 papae");
       escolherItem();
@@ -213,32 +214,33 @@ String? zonaSaoPaulo() {
     "Esse RPG se passa na cidade de São Paulo, portanto você deve escolher em qual zona da cidade deseja iniciar sua aventura \n ",
     35,
   );
-  escreverDevagar("As zonas disponíveis são: ", 35);
-  print("Zona Sul");
-  print("Zona Norte");
-  print("Zona Leste");
-  print("Zona Oeste");
-  print("Centro da Cidade");
+  escreverDevagar("As zonas disponíveis são: \n", 35);
+  print("Zona Sul (Dificuldade : Médio)");
+  print("Zona Norte(Dificuldade :Normal )");
+  print("Zona Leste(Dificuldade : Hard)");
+  print("Zona Oeste(Dificuldade : Easy )");
+  print("Centro da Cidade( Dificuldade : Ultra Hard)");
   var escolha = stdin.readLineSync().toString();
   escolha.toUpperCase();
   switch (escolha) {
-    case "ZONA SUL":
-      escreverDevagar("O início foi determinado na Zona Sul", 25);
+    case "zona sul":
+      escreverDevagar("O início foi determinado na Zona Sul \n ", 25);
       return "Zona Sul";
-    case "ZONA NORTE":
-      escreverDevagar("O início foi determinado na Zona Norte", 25);
+    case "zona norte":
+      escreverDevagar("O início foi determinado na Zona Norte \n ", 25);
       return "Zona Norte";
-    case "ZONA LESTE":
-      escreverDevagar("O início foi determinado para a Zona Leste", 25);
+    case "zona leste":
+      escreverDevagar("O início foi determinado para a Zona Leste \n ", 25);
       return "Zona Leste";
-    case "ZONA OESTE":
-      escreverDevagar("O início foi determinado para a Zona Oeste", 25);
+    case "zona oeste":
+      escreverDevagar("O início foi determinado para a Zona Oeste \n ", 25);
       return "Zona Oeste";
-    case "CENTRO DA CIDADE":
-      escreverDevagar("O início foi determinado para o Centro da Cidade", 25);
+    case "centro da cidade":
+      escreverDevagar("O início foi determinado para o Centro da Cidade \n ", 25);
       return "Centro da Cidade";
     default:
-      print("Escreva o nome da zona que quer iniciar a sua jornada");
+      print("Escreva o nome da zona que quer iniciar a sua jornada \n ");
+      zonaSaoPaulo();
   }
   ;
 }
