@@ -4,12 +4,15 @@ import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
 import 'dart:math';
+import 'dart:vmservice_io';
+
 
 void main() async {
   var personagemSimples = {
     "nomeUsuario": receberNome(),
     "vida": 100,
     "itemEscolhido": null,
+    "zonaescolhida": null,
   };
 
   escreverDevagar(
@@ -20,7 +23,7 @@ void main() async {
   var itens = ["Arco e Flecha", "Cajado do Vazio", "Espada Vorpal"];
   var usuario = personagemSimples["nomeUsuario"];
   var vida = personagemSimples["vida"];
-  var monstros = [
+  var monstrosZonaLeste = [
     {
       "nome": "Dois caras numa moto",
       "vida": 10,
@@ -47,9 +50,9 @@ void main() async {
     },
   ];
 
-  var monstro1 = monstros[0]["nome"];
-  var monstro2 = monstros[1]["nome"];
-  var monstro3 = monstros[2]["nome"];
+  var monstro1 = monstrosZonaLeste[0]["nome"];
+  var monstro2 = monstrosZonaLeste[1]["nome"];
+  var monstro3 = monstrosZonaLeste[2]["nome"];
   escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
   escreverDevagar("itens disponíveis \n", 35);
   escreverDevagar("$itens \n", 35);
@@ -58,44 +61,26 @@ void main() async {
   personagemSimples["itemEscolhido"] = escolherItem();
   var monstroAserEscolhido = escolherItem();
   //Agora Irá começar a luta contra o Monstro
-  switch (monstroAserEscolhido) {
-    case "Arco e Flecha":
-      escreverDevagar(
-        "Agora que você escolheu a sua arma, você irá lutar contra o $monstro2"
-        "\n",
-        35,
-      );
-      escreverDevagar(
-        "A LUTA SERA : $usuario X $monstro2"
-        "\n",
-        35,
-      );
-      personagemSimples["vida"] = luta(nomeMonstro: monstro2, vida: vida);
-    case "Cajado do Vazio":
-      escreverDevagar(
-        "Agora que você escolheu a sua arma, você irá lutar contra o $monstro1"
-        "\n",
-        35,
-      );
-      escreverDevagar(
-        "A LUTA SERA : $usuario X $monstro1"
-        "\n",
-        35,
-      );
-      personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
-    case "Espada Vorpal":
-      escreverDevagar(
-        "Agora que você escolheu a sua arma, você irá lutar contra o $monstro3"
-        "\n",
-        35,
-      );
-      escreverDevagar(
-        "A LUTA SERA : $usuario X $monstro3"
-        "\n",
-        35,
-      );
-      personagemSimples["vida"] = luta(nomeMonstro: monstro3, vida: vida);
-  }
+  escreverDevagar(
+    "A LUTA SERA : $usuario X $monstro2"
+    "\n",
+    35,
+  );
+  personagemSimples["vida"] = luta(nomeMonstro: monstro2, vida: vida);
+
+  escreverDevagar(
+    "A LUTA SERA : $usuario X $monstro1"
+    "\n",
+    35,
+  );
+  personagemSimples["vida"] = luta(nomeMonstro: monstro1, vida: vida);
+
+  escreverDevagar(
+    "A LUTA SERA : $usuario X $monstro3"
+    "\n",
+    35,
+  );
+  personagemSimples["vida"] = luta(nomeMonstro: monstro3, vida: vida);
 
   escreverDevagar(
     "$monstro1 --- Sobrara nada para o betinha da silva"
@@ -220,4 +205,39 @@ bool confirmacao(String usuario) {
     }
   }
   return confirmation;
+}
+
+String? zonaSaoPaulo({required String escolha}) {
+  escreverDevagar(
+    "Esse RPG se passa na cidade de São Paulo, portanto você deve escolher em qual zona da cidade deseja iniciar sua aventura \n ",
+    35,
+  );
+  escreverDevagar("As zonas disponíveis são: ", 35);
+  print("Zona Sul");
+  print("Zona Norte");
+  print("Zona Leste");
+  print("Zona Oeste");
+  print("Centro da Cidade");
+  var escolha = stdin.readLineSync().toString();
+  escolha.toUpperCase();
+  switch (escolha) {
+    case "ZONA SUL":
+      escreverDevagar("O início foi determinado na Zona Sul", 25);
+      return "Zona Sul";
+    case "ZONA NORTE":
+      escreverDevagar("O início foi determinado na Zona Norte", 25);
+      return "Zona Norte";
+    case "ZONA LESTE":
+      escreverDevagar("O início foi determinado para a Zona Leste", 25);
+      return "Zona Leste";
+    case "ZONA OESTE":
+      escreverDevagar("O início foi determinado para a Zona Oeste", 25);
+      return "Zona Oeste";
+    case "CENTRO DA CIDADE":
+      escreverDevagar("O início foi determinado para o Centro da Cidade", 25);
+      return "Centro da Cidade";
+    default:
+      print("Escreva o nome da zona que quer iniciar a sua jornada");
+  }
+  ;
 }
