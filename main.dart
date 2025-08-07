@@ -6,8 +6,11 @@ import 'dart:isolate';
 import 'dart:math';
 import 'dart:vmservice_io';
 
-
 void main() async {
+  escreverDevagar(
+    "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n",
+    35,
+  );
   var personagemSimples = {
     "nomeUsuario": receberNome(),
     "vida": 100,
@@ -15,43 +18,14 @@ void main() async {
     "zonaescolhida": zonaSaoPaulo(),
   };
 
-  escreverDevagar(
-    "Bem vindo ao RPG Da Silva, é um projeto pastelão de um aspirante a programador \n",
-    35,
-  );
-
   var itens = ["Três oitão", "Canivete de Bolso", "Taser"];
   var usuario = personagemSimples["nomeUsuario"];
   var vida = personagemSimples["vida"];
   var zonaDaSilva = personagemSimples["zonaescolhida"];
-  var monstrosZonaLeste = [
-    {
-      "nome": "Dois caras numa moto",
-      "vida": 10,
-      "Habilidades": [
-        {"Primaria": "Três tiros", "Secundária": "Paulada"},
-      ],
-    },
-    {
-      "nome": "Bêbado do Centro",
-      "vida": "20",
-      "Habilidades": [
-        {"Primaria": "Facada", "Secundaria": "Lançamento de cocô"},
-      ],
-    },
-    {
-      "nome": "CLT de Ressaca",
-      "vida": "5",
-      "Habilidades": [
-        {
-          "Primaria": "Joga a culpa em você",
-          "Secundaria": "Derrama café quente você",
-        },
-      ],
-    },
-  ];
- var monstro1Habilidade = monstrosZonaLeste[0]["Habilidades"];
- print(monstro1Habilidade);
+  
+  
+  var monstro1Habilidade = monstrosZonaLeste[0]["Habilidades"];
+  print(monstro1Habilidade);
   var monstro1 = monstrosZonaLeste[0]["nome"];
   var monstro2 = monstrosZonaLeste[1]["nome"];
   var monstro3 = monstrosZonaLeste[2]["nome"];
@@ -61,7 +35,7 @@ void main() async {
 
   //  print("Os seus itens são $itens");
   personagemSimples["itemEscolhido"] = escolherItem();
-  
+
   //Agora Irá começar a luta contra o Monstro
   escreverDevagar(
     "A LUTA SERA : $usuario X $monstro2"
@@ -84,11 +58,6 @@ void main() async {
   );
   personagemSimples["vida"] = luta(nomeMonstro: monstro3, vida: vida);
 
-  escreverDevagar(
-    "$monstro1 --- Sobrara nada para o betinha da silva"
-    "\n",
-    35,
-  );
   print(personagemSimples["vida"]);
 }
 
@@ -97,12 +66,15 @@ void formatarTexto({String? formatacao}) {
 }
 
 int? lutarMonstro({required String nomeMonstro, required var vida}) {
-  print("VOCÊ IRÁ JOGAR O DADO PARA VER SE IRÁ GANHAR DO $nomeMonstro");
+  print("VOCÊ IRÁ JOGAR O DADO PARA VER SE IRÁ GANHAR DO $nomeMonstro");  
+  ;
   var d10 = Random().nextInt(10);
   print("O valor do dado de 1 a 10 foi de $d10");
   if (d10 < 5) {
     vida = vida - 10;
-    print("O monstro usou sua habilidade de  sua vida esta com o saldo de $vida");
+    print(
+      "O monstro usou sua habilidade de sua vida esta com o saldo de $vida",
+    );
     return vida;
   } else {
     print("Você ganhou do $nomeMonstro");
@@ -236,7 +208,10 @@ String? zonaSaoPaulo() {
       escreverDevagar("O início foi determinado para a Zona Oeste \n ", 25);
       return "Zona Oeste";
     case "centro da cidade":
-      escreverDevagar("O início foi determinado para o Centro da Cidade \n ", 25);
+      escreverDevagar(
+        "O início foi determinado para o Centro da Cidade \n ",
+        25,
+      );
       return "Centro da Cidade";
     default:
       print("Escreva o nome da zona que quer iniciar a sua jornada \n ");
@@ -244,3 +219,33 @@ String? zonaSaoPaulo() {
   }
   ;
 }
+
+
+var monstrosZonaLeste = [
+    {
+      "nome": "Dois caras numa moto",
+      "vida": 10,
+      "Habilidades": [
+        {"Primaria": "Três tiros", "Secundária": "Paulada"},
+      ],
+    },
+    {
+      "nome": "Bêbado do Centro",
+      "vida": "20",
+      "Habilidades": [
+        {"Primaria": "Facada", "Secundaria": "Lançamento de cocô"},
+      ],
+    },
+    {
+      "nome": "CLT de Ressaca",
+      "vida": "5",
+      "Habilidades": [
+        {
+          "Primaria": "Joga a culpa em você",
+          "Secundaria": "Derrama café quente você",
+        },
+      ],
+    },
+  ];
+   var habilidadeMonstros = monstrosZonaLeste[0]["Habilidades"];
+   
