@@ -1,33 +1,64 @@
+
 import 'dart:math';
 import 'dart:io';
 
 void main() {
-var monstrosZonaLeste = [
+  var chefoes =<Map<String,dynamic>> [
     {
-      "nome": "Dois caras numa moto",
+      "nome": "Caveira de Chamas",
       "vida": 10,
       "Habilidades": [
-        {"Primaria": "Três tiros", "Secundária": "Paulada"},
+        {"Primaria": "Bola de Chamas", "Secundária": "Rajada de Chamas"}
       ],
     },
     {
-      "nome": "Bêbado do Centro",
+      "nome": "Golem de Ferro",
       "vida": "20",
       "Habilidades": [
-        {"Primaria": "Facada", "Secundaria": "Lançamento de cocô"},
-      ],
-    },
-    {
-      "nome": "CLT de Ressaca",
-      "vida": "5",
-      "Habilidades": [
-        {
-          "Primaria": "Joga a culpa em você",
-          "Secundaria": "Derrama café quente você",
-        },
-      ],
-    },];
-    var testedasilva = monstrosZonaLeste[0]["Habilidades"];
-    print(testedasilva);
-    
+        {"Primaria": "Soco Biônico", "Secundaria": "Lançamento de oponente"}
+      ]
+    }
+  ];
+
+  var habilidades = chefoes[0]["Habilidades"]?[0]["Primaria"];
+  print(habilidades);
+
+}
+
+
+  var personagemSimples =<String,dynamic> {
+    "nomeUsuario": "Zezin",
+    "vida": 100,
+    "itemEscolhido": "Faca",
+    "zonaescolhida": null,
+  }; 
+
+int? luta({required int vida, required String itemESCOLHIDO, required Map chefoes }){
+
+      vida = personagemSimples["vida"];
+      print("1 - lutar, 2 - fugir");
+    var escolha = stdin.readLineSync();
+    var dado = Random().nextInt(10);
+    switch(escolha){
+      case"1":
+
+
+
+
+
+
+
+
+
+        case"2":
+        print("Dado será rolado para ver se você irá conseguir fugir");
+        if(dado<5){
+          vida = vida - 10;
+        }
+        else{
+          print("Você conseguiu fugir");
+        }
+    }
+
+
 }

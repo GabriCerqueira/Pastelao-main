@@ -1,10 +1,5 @@
-import 'dart:async';
-import 'dart:developer';
-import 'dart:ffi';
 import 'dart:io';
-import 'dart:isolate';
 import 'dart:math';
-import 'dart:vmservice_io';
 
 void main() {}
 var itens = ["Três oitão", "Canivete de Bolso", "Taser"];
@@ -197,11 +192,16 @@ int? itemLuta(int valorDado) {
     case "Três oitão":
       var resultado = valorDado + 3;
       return resultado;
-    case "Canivete de Bolso":
-    var resultado = valorDado + 1; 
-    return resultado;
-    case "Taser" : 
-    var resultado = valorDado +2;
-    return resultado;
+    case "Canivete de Bolso":    
+      var resultado = valorDado + 1;
+      return resultado;
+    case "Taser":
+      var resultado = valorDado + 2;
+      return resultado;
   }
 }
+
+
+
+
+

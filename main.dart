@@ -1,10 +1,3 @@
-import 'dart:async';
-import 'dart:developer';
-import 'dart:ffi';
-import 'dart:io';
-import 'dart:isolate';
-import 'dart:math';
-import 'dart:vmservice_io';
 import 'funcoes.dart';
 
 void main() async {
