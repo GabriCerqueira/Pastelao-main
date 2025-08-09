@@ -28,6 +28,6 @@ var monstrosZonaLeste = [
       ],
     },];
     var testedasilva = monstrosZonaLeste[0]["Habilidades"];
-    var primaria = testedasilva["Primaria"];
+    print(testedasilva);
     
 }
