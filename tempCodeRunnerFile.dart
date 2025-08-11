@@ -1,10 +1,11 @@
 import 'dart:math';
 import 'dart:io';
+import 'dart:core';
 
 void main() {
-
-  luta(vida: 100, itemESCOLHIDO: itemNome, chefoes: vidaMonstro);
+  luta(vida: 100, itemESCOLHIDO: itemNome, chefoes: 10);
 }
+  
 var chefoes = <Map<String, dynamic>>[
   {
     "nome": "Caveira de Chamas",
@@ -15,19 +16,19 @@ var chefoes = <Map<String, dynamic>>[
   },
   {
     "nome": "Golem de Ferro",
-    "vida": "20",
+    "vida": 20,
     "Habilidades": [
       {"Primaria": "Soco Biônico", "Secundaria": "Lançamento de oponente"},
     ],
   },
 ];
-var vidaMonstro = chefoes[0]["vida"];
-var habilidades = chefoes[0]["Habilidades"]?[0]["Primaria"];
-var itens = [
-  {"item": "canivete", "dano": "20"},
+int vidaMonstro = chefoes[0]["vida"];
+String habilidades = chefoes[0]["Habilidades"]?[0]["Primaria"];
+var itens = <Map<String,dynamic>>[
+  {"item": "canivete", "dano": 20},
 ];
 
-var itenDano = itens[0]["dano"];
+var itemDano = itens[0]["dano"];
 var itemNome = itens[0]["item"];
 
 var personagemSimples = <String, dynamic>{
@@ -37,21 +38,17 @@ var personagemSimples = <String, dynamic>{
   "zonaescolhida": null,
 };
 
- luta({
-  required int vida,
-  required var itemESCOLHIDO,
-  required Map chefoes,
-}) {
+luta({required var vida, required var itemESCOLHIDO, required int chefoes}) {
   vida = personagemSimples["vida"];
   print("1 - lutar, 2 - fugir");
   var escolha = stdin.readLineSync();
   var dado = Random().nextInt(10);
   switch (escolha) {
     case "1":
-    var resultado = vidaMonstro - itenDano;
+      var resultado = vidaMonstro - itemDano;
       print("VocÊ irá atacar com a sua arma, $itemNome");
       print(resultado);
-      
+
     case "2":
       print("Dado será rolado para ver se você irá conseguir fugir");
       if (dado < 5) {
