@@ -5,7 +5,7 @@ import 'dart:core';
 void main() {
   luta(vida: 100, itemESCOLHIDO: itemNome, chefoes: 10);
 }
-  
+
 var chefoes = <Map<String, dynamic>>[
   {
     "nome": "Caveira de Chamas",
@@ -24,7 +24,7 @@ var chefoes = <Map<String, dynamic>>[
 ];
 int vidaMonstro = chefoes[0]["vida"];
 String habilidades = chefoes[0]["Habilidades"]?[0]["Primaria"];
-var itens = <Map<String,dynamic>>[
+var itens = <Map<String, dynamic>>[
   {"item": "canivete", "dano": 20},
 ];
 
@@ -38,23 +38,42 @@ var personagemSimples = <String, dynamic>{
   "zonaescolhida": null,
 };
 
-luta({required var vida, required var itemESCOLHIDO, required int chefoes}) {
-  vida = personagemSimples["vida"];
+int? luta({
+  required var vida,
+  required var itemESCOLHIDO,
+  required int chefoes,
+}) {
   print("1 - lutar, 2 - fugir");
   var escolha = stdin.readLineSync();
-  var dado = Random().nextInt(10);
-  switch (escolha) {
-    case "1":
-      var resultado = vidaMonstro - itemDano;
-      print("VocÊ irá atacar com a sua arma, $itemNome");
-      print(resultado);
-
-    case "2":
-      print("Dado será rolado para ver se você irá conseguir fugir");
-      if (dado < 5) {
-        vida = vida - 10;
-      } else {
-        print("Você conseguiu fugir");
-      }
+  switch(escolha){
+  case "1":
+    VidaMonstroAlteradaLuta(itemESCOLHIDO,chefoes);
+  
+  case "2":
+    vidaPlayerAlteradaLuta(vida);
   }
+  return null;
+}
+
+String? VidaMonstroAlteradaLuta(var itemDano, int vidaMonstro){
+  var resultado = vidaMonstro - itemDano;
+  print("VocÊ irá atacar com a sua arma, $itemNome");
+  print(resultado);
+  return resultado.toString();
+}
+
+String? vidaPlayerAlteradaLuta(var vida) {
+  var vida = personagemSimples["vida"];
+  var dado = Random().nextInt(10);
+  print("Dado será rolado para ver se você irá conseguir fugir");
+  if (dado < 5) {
+    print(" o valor do dado foi $dado");
+    vida = vida - 10;
+    print(vida);
+    return personagemSimples["vida"] = vida;
+
+  } else if (dado > 5) {
+    print("Você conseguiu fugir");
+  }
+  return null;
 }

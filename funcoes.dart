@@ -156,6 +156,7 @@ String? zonaSaoPaulo() {
       zonaSaoPaulo();
   }
   ;
+  return null;
 }
 
 var monstrosZonaLeste = [
@@ -199,6 +200,7 @@ int? itemLuta(int valorDado) {
       var resultado = valorDado + 2;
       return resultado;
   }
+  return null;
 }
 
 
