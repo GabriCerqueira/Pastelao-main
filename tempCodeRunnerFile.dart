@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:io';
 import 'dart:core';
+import 'dart:vmservice_io';
 
 void main() {
   luta(vida: 100, itemESCOLHIDO: itemNome, chefoes: 10);
@@ -8,17 +9,17 @@ void main() {
 
 var chefoes = <Map<String, dynamic>>[
   {
-    "nome": "Caveira de Chamas",
+    "nome": "Bêbado do Centro",
     "vida": 10,
     "Habilidades": [
-      {"Primaria": "Bola de Chamas", "Secundária": "Rajada de Chamas"},
+      {"Primaria": "Crack da Silva", "Secundária": "Pedrada"},
     ],
   },
   {
-    "nome": "Golem de Ferro",
+    "nome": "Dois Caras Numa Moto",
     "vida": 20,
     "Habilidades": [
-      {"Primaria": "Soco Biônico", "Secundaria": "Lançamento de oponente"},
+      {"Primaria": "Três Tiros", "Secundaria": "Facada"},
     ],
   },
 ];
@@ -51,15 +52,17 @@ int? luta({
   
   case "2":
     vidaPlayerAlteradaLuta(vida);
+  default : luta(vida: 100, itemESCOLHIDO: itemESCOLHIDO, chefoes: chefoes);
   }
+  
   return null;
 }
 
-String? VidaMonstroAlteradaLuta(var itemDano, int vidaMonstro){
+int VidaMonstroAlteradaLuta(int itemDano, int vidaMonstro){
   var resultado = vidaMonstro - itemDano;
   print("VocÊ irá atacar com a sua arma, $itemNome");
   print(resultado);
-  return resultado.toString();
+  return resultado;
 }
 
 String? vidaPlayerAlteradaLuta(var vida) {
@@ -70,7 +73,7 @@ String? vidaPlayerAlteradaLuta(var vida) {
     print(" o valor do dado foi $dado");
     vida = vida - 10;
     print(vida);
-    return personagemSimples["vida"] = vida;
+    return personagemSimples["vida"] = vida.toString();
 
   } else if (dado > 5) {
     print("Você conseguiu fugir");
