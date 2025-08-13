@@ -26,10 +26,10 @@ var chefoes = <Map<String, dynamic>>[
 int vidaMonstro = chefoes[0]["vida"];
 String habilidades = chefoes[0]["Habilidades"]?[0]["Primaria"];
 var itens = <Map<String, dynamic>>[
-  {"item": "canivete", "dano": 20},
+  {"item": 10, "dano": 20}, // erro do código está aqui, pelo visto estou puxando o value da key item, isso esta incorreto pois devo puxar uma int que será o dano do item e não seu nome
 ];
 
-var itemDano = itens[0]["dano"];
+int itemDano = itens[0]["dano"];
 var itemNome = itens[0]["item"];
 
 var personagemSimples = <String, dynamic>{
