@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 void main() {}
+
 var itens = ["Três oitão", "Canivete de Bolso", "Taser"];
 void formatarTexto({String? formatacao}) {
   print("O item escolhido é $formatacao");
@@ -193,7 +194,7 @@ int? itemLuta(int valorDado) {
     case "Três oitão":
       var resultado = valorDado + 3;
       return resultado;
-    case "Canivete de Bolso":    
+    case "Canivete de Bolso":
       var resultado = valorDado + 1;
       return resultado;
     case "Taser":
@@ -203,7 +204,63 @@ int? itemLuta(int valorDado) {
   return null;
 }
 
-
-
-
-
+String? caminhoEscolhido() {
+  escreverDevagar(
+    "Digite 1 para escolher o caminho mais rápido , ou 2 para o caminho mais seguro \n",
+    35,
+  );
+  var caminho = stdin.readByteSync();
+  if (caminho == "1") {
+    escreverDevagar(
+      "Você escolheu o caminho mais rápido porém mais perigoso"
+      "\n",
+      35,
+    );
+    int sorteioDeAzar = Random().nextInt(10);
+    if (sorteioDeAzar > 6) {
+      escreverDevagar(
+        "Você deu sorte e conseguiu chegar no ponto de ônibus sem ser assaltado"
+        "\n",
+        35,
+      );
+    }
+  } else {
+    var monstro1 = monstrosZonaLeste[0]["nome"];
+    var monstro2 = monstrosZonaLeste[1]["nome"];
+    var monstro3 = monstrosZonaLeste[2]["nome"];
+    var vida = 100;
+    int sorteioMonstro = Random().nextInt(3);
+    switch (sorteioMonstro) {
+      case 1:
+        escreverDevagar(
+          " Você deu azar e terá que lutar contra o $monstro1 \n",
+          35,
+        );
+        luta(nomeMonstro: monstro1, vida: vida);
+      case 2:
+        escreverDevagar(
+          "Você deu azar e terá que lutar contra o $monstro2 \n",
+          35,
+        );
+        luta(nomeMonstro: monstro2, vida: vida);
+      case 3:
+        escreverDevagar(
+          "Você deu azar e terá que lutar contra o $monstro3 \n",
+          35,
+        );
+        luta(nomeMonstro: monstro3, vida: vida);
+    }
+  }
+  if (caminho == "2") {
+    escreverDevagar(
+      "Você irá percorrer o caminho mais longo porém mais seguro, com sorte irá chegar no horário no ponto de ônibus ",
+      35,
+    );
+    var sorteio = Random().nextInt(10);
+    if (sorteio > 5) {
+      escreverDevagar("O ônibus chegou no horário, você deu muita sorte e irá chegar no trabalho na hora", 35);
+    } else {
+      escreverDevagar("Infelizmente o ônibus quebrou no caminho, você irá chegar 30 minutos atrasado", 30);
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'funcoes.dart';
 
 void main() async {
@@ -35,6 +37,26 @@ void main() async {
   //  print("Os seus itens são $itens");
   personagemSimples["itemEscolhido"] = escolherItem();
 
+  escreverDevagar(
+    "O seu dia começa como o  dia de todo bom CLT, você acorda as 5 da manhã pra ir trabalhar"
+    "\n",
+    35,
+  );
+  escreverDevagar(
+    "Você se arruma, toma seu café da manhã e sai da sua casa para pegar o ônibus com direção a estação de trem"
+    "\n",
+    35,
+  );
+  escreverDevagar(
+    "Você tem duas opções, escolher o caminho que é mais rápido porém é mais perigoso, ou escolher o caminho que demora mais porém é mais seguro \n",
+    35,
+  );
+
+  caminhoEscolhido();
+
+  /**
+
+
   //Agora Irá começar a luta contra o Monstro
   escreverDevagar(
     "A LUTA SERA : $usuario X $monstro2"
@@ -58,4 +80,5 @@ void main() async {
   personagemSimples["vida"] = luta(nomeMonstro: monstro3, vida: vida);
 
   print(personagemSimples["vida"]);
-} 
+   */
+}
