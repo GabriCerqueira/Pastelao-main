@@ -213,7 +213,8 @@ String? caminhoEscolhido() {
     " [2] O caminho mais devagar e seguro \n",
     35,
   );
-  var caminho = stdin.readByteSync();
+  var caminho = stdin.readLineSync();
+
   if (caminho == "1") {
     escreverDevagar(
       "Você escolheu o caminho mais rápido porém mais perigoso"
@@ -228,7 +229,7 @@ String? caminhoEscolhido() {
         35,
       );
     }
-     else {
+     else if(caminho == 2) {
     var monstro1 = monstrosZonaLeste[0]["nome"];
     var monstro2 = monstrosZonaLeste[1]["nome"];
     var monstro3 = monstrosZonaLeste[2]["nome"];
@@ -263,9 +264,20 @@ String? caminhoEscolhido() {
       35,
     );
     if (sorteio > 5) {
-      escreverDevagar("O ônibus chegou no horário, você deu muita sorte e irá chegar no trabalho na hora", 35);
+      escreverDevagar("O ônibus chegou no horário, você deu muita sorte e irá chegar no trabalho na hora" "\n", 35);
     } else {
-      escreverDevagar("Infelizmente o ônibus quebrou no caminho, você irá chegar 30 minutos atrasado", 30);
+      escreverDevagar("Infelizmente o ônibus quebrou no caminho, você irá chegar 30 minutos atrasado" "\n", 30)
+      
+      ;
     }
   }
+
+
+
+
+
+
+
+
+
 }

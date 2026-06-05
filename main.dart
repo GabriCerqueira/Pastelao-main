@@ -28,7 +28,6 @@ void main() async {
   );
 //  personagemSimples["zonaescolhida"] = zonaSaoPaulo();
 
-  var itens = ["Três oitão", "Canivete de Bolso", "Taser"];
   var usuario = personagemSimples["nomeUsuario"];
   var vida = personagemSimples["vida"];
   var zonaDaSilva = personagemSimples["zonaescolhida"];
@@ -38,12 +37,12 @@ void main() async {
   var monstro1 = monstrosZonaLeste[0]["nome"];
   var monstro2 = monstrosZonaLeste[1]["nome"];
   var monstro3 = monstrosZonaLeste[2]["nome"];
-  escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
+/**   escreverDevagar("selecione seus items, digitando de 1 a 3 \n", 35);
   escreverDevagar("itens disponíveis \n", 35);
-  escreverDevagar("$itens \n", 35);
+  escreverDevagar("$itens \n", 35);*/
 
   //  print("Os seus itens são $itens");
-  personagemSimples["itemEscolhido"] = escolherItem();
+  // personagemSimples["itemEscolhido"] = escolherItem();
 
   escreverDevagar(
     "O seu dia começa como o  dia de todo bom CLT, você acorda as 5 da manhã pra ir trabalhar"
@@ -61,6 +60,15 @@ void main() async {
   );
 
   caminhoEscolhido();
+
+  escreverDevagar(
+    "De alguma forma você conseguiu chegar ao seu trabalho..."
+    "\n"
+    "Você trabalha em uma repartição pública do Estado de São Paulo, e a sua função é carimbar papéis para o secretário da repartição ",
+    35,
+  );
+
+
 
   /**
 
