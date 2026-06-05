@@ -16,7 +16,7 @@ int? lutarMonstro({required String nomeMonstro, required var vida}) {
   if (d10 < 5) {
     vida = vida - 10;
     print(
-      "O monstro usou sua habilidade de sua vida esta com o saldo de $vida",
+      "O inimigo usou sua habilidade de sua vida esta com o saldo de $vida",
     );
     return vida;
   } else {
@@ -38,7 +38,7 @@ int? luta({required nomeMonstro, required var vida}) {
         "Você irá ser capaz de fugir de acordo com o valor do dado, o valor do dado é $d10Luta",
       );
       if (d10Luta > 5) {
-        print("Você conseguiu fugir do Monstro");
+        print("Você conseguiu fugir do inimigo");
         break;
       } else {
         var resultado2 = lutarMonstro(nomeMonstro: nomeMonstro, vida: vida);
@@ -206,7 +206,11 @@ int? itemLuta(int valorDado) {
 
 String? caminhoEscolhido() {
   escreverDevagar(
-    "Digite 1 para escolher o caminho mais rápido , ou 2 para o caminho mais seguro \n",
+    " [1] O caminho mais rápido e perigoso \n",
+    35,
+  );
+   escreverDevagar(
+    " [2] O caminho mais devagar e seguro \n",
     35,
   );
   var caminho = stdin.readByteSync();
@@ -224,7 +228,7 @@ String? caminhoEscolhido() {
         35,
       );
     }
-  } else {
+     else {
     var monstro1 = monstrosZonaLeste[0]["nome"];
     var monstro2 = monstrosZonaLeste[1]["nome"];
     var monstro3 = monstrosZonaLeste[2]["nome"];
@@ -251,12 +255,13 @@ String? caminhoEscolhido() {
         luta(nomeMonstro: monstro3, vida: vida);
     }
   }
-  if (caminho == "2") {
+  }
+  else {
+     var sorteio = Random().nextInt(10);
     escreverDevagar(
-      "Você irá percorrer o caminho mais longo porém mais seguro, com sorte irá chegar no horário no ponto de ônibus ",
+      "Você irá percorrer o caminho mais longo porém mais seguro, com sorte irá chegar no horário no ponto de ônibus \n ",
       35,
     );
-    var sorteio = Random().nextInt(10);
     if (sorteio > 5) {
       escreverDevagar("O ônibus chegou no horário, você deu muita sorte e irá chegar no trabalho na hora", 35);
     } else {

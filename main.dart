@@ -15,10 +15,18 @@ void main() async {
     "zonaescolhida": null,
   };
   escreverDevagar(
-    "Esse RPG se passa na cidade de São Paulo, portanto você deve escolher em qual zona da cidade deseja iniciar sua aventura \n ",
+    "Esse RPG se passa na cidade de São Paulo\n ",
     35,
   );
-  personagemSimples["zonaescolhida"] = zonaSaoPaulo();
+   escreverDevagar(
+    "Você mora na zona Leste....\n ",
+    35,
+  );
+     escreverDevagar(
+    "Uma das zonas mais perigosas da cidade....\n ",
+    45,
+  );
+//  personagemSimples["zonaescolhida"] = zonaSaoPaulo();
 
   var itens = ["Três oitão", "Canivete de Bolso", "Taser"];
   var usuario = personagemSimples["nomeUsuario"];
@@ -48,7 +56,7 @@ void main() async {
     35,
   );
   escreverDevagar(
-    "Você tem duas opções, escolher o caminho que é mais rápido porém é mais perigoso, ou escolher o caminho que demora mais porém é mais seguro \n",
+    "Você tem duas opções...\n",
     35,
   );
 
